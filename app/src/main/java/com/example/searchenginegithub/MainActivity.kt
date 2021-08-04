@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         var retrofit = RetrofitClient.getClient("https://api.github.com/").create(API::class.java)
 
-        retrofit.search("location:ukraine language:kotlin")
+        retrofit.search("location:ukraine language:java")
             .enqueue(object : Callback<ResultListProgramist> {
             override fun onResponse(call: Call<ResultListProgramist>, response: Response<ResultListProgramist>) {
                 if (response.body() != null){
