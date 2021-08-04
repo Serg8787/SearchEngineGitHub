@@ -3,12 +3,15 @@ package com.example.searchenginegithub
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
+
+    var adapter: ProgramistAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -22,8 +25,10 @@ class MainActivity : AppCompatActivity() {
             .enqueue(object : Callback<ResultListProgramist> {
             override fun onResponse(call: Call<ResultListProgramist>, response: Response<ResultListProgramist>) {
                 if (response.body() != null){
-                  tvStart.text =  response.body()!!.total_count.toString()
-                    Log.d("MyLOG", "onRespose "+ response.body()!!.total_count.toString())
+                    val list:ArrayList<ItemProgramist> = response.body()!!.items as ArrayList<ItemProgramist>
+                    adapter = ProgramistAdapter(baseContext, list)
+                    recycler.setLayoutManager(LinearLayoutManager(baseContext));
+                    recycler.setAdapter(adapter);
                 }
                 Log.d("MyLOG", "onRespose "+ response.body()!!.total_count.toString())
             }
