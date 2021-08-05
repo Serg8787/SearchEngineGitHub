@@ -22,11 +22,12 @@ class InfoAboutDeveloperActivity : AppCompatActivity() {
 
         login = intent.getStringExtra("login").toString()
         tvLoginInfo.text = login
+
         val avatar = intent.getStringExtra("avatarUrl")
-        Log.d("avatar",avatar.toString())
         Glide
             .with(this)
             .load(avatar)
+            .circleCrop()
             .into(ivAvatarInfo);
     }
 

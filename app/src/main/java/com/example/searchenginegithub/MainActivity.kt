@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity(), ItemCallback {
         intent.putExtra("avatarUrl",avatarUrl)
         intent.putExtra("id",id)
         intent.putExtra("noteId",noteId)
-        intent.putExtra("login",followersUrl)
+        intent.putExtra("followersUrl",followersUrl)
 
         startActivity(intent)
     }
