@@ -18,7 +18,7 @@ import retrofit2.Response
 
 class InfoAboutDeveloperActivity : AppCompatActivity() {
 
-    lateinit var login:String
+
 
 
     var adapterRepo: RepoAdapter? = null
@@ -29,9 +29,13 @@ class InfoAboutDeveloperActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info_about_developer)
 
-        login = intent.getStringExtra("login").toString()
+        val login = intent.getStringExtra("login").toString()
         tvLoginInfo.text = login
-        Log.d("MyLOG",login)
+
+        val id = intent.getStringExtra("id")
+        tvIdInfo.text = "id =  ${id}"
+
+
 
         val avatar = intent.getStringExtra("avatarUrl")
         Glide

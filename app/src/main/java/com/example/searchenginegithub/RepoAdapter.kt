@@ -14,12 +14,14 @@ class RepoAdapter(val context:Context,val listRepoItem:ArrayList<RepoItem>):Recy
     }
 
     override fun onBindViewHolder(holder: ViewHolderRepo, position: Int) {
-        holder.name.text = listRepoItem[position].events_url
+        holder.name.text = listRepoItem[position].name
+//        holder.desctption.text = listRepoItem[position].description.toString()
     }
 
     override fun getItemCount(): Int = listRepoItem.size
 }
 class ViewHolderRepo(itemView: View) : RecyclerView.ViewHolder(itemView){
     val name = itemView.tvNameRepo
+    val desctption = itemView.tvDescriptionRepo
 
 }
