@@ -16,9 +16,10 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity(), ItemCallback {
 
     var adapter: ProgramistAdapter? = null
+    lateinit var list: ArrayList<ItemProgramist>
     lateinit var location: String
     lateinit var language: String
-    lateinit var list: ArrayList<ItemProgramist>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
