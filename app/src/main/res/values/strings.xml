@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">SearchEngineGitHub</string>
+    <string-array name="fruit_list">
+        <item>Orange</item>
+        <item>Pineapple</item>
+        <item>Banana</item>
+        <item>Mango</item>
+        <item>Grapefruits</item>
+        <item>Pears</item>
+        <item>Coconut</item>
+        <item>Watermelons</item>
+        <item>Blueberries</item>
+        <item>Lemon</item>
+    </string-array>
 </resources>
