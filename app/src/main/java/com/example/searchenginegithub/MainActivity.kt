@@ -2,6 +2,7 @@ package com.example.searchenginegithub
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
@@ -9,7 +10,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ItemCallback {
 
     var adapter: ProgramistAdapter? = null
     lateinit var location: String
@@ -18,8 +19,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        language = ""
-        location = ""
+
+        val language = resources.getStringArray(R.array.language)
+        val adapterLan = ArrayAdapter(this, R.layout.dropdown_item, language)
+        autoCompleteTVLanguage.setAdapter(adapterLan)
+
+        val location = resources.getStringArray(R.array.location)
+        val adapterLoc = ArrayAdapter(this, R.layout.dropdown_item, location)
+        autoCompleteTVLocation.setAdapter(adapterLoc)
 
         btSearch.setOnClickListener {
             getListProgramist()
@@ -27,8 +34,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun getListProgramist() {
-        location = edLocation.text.toString()
-        language = edLanguage.text.toString()
+        language = autoCompleteTVLocation.text.toString()
+        location  = autoCompleteTVLocation.text.toString()
 
         val retrofit = RetrofitClient.getClient("https://api.github.com/").create(API::class.java)
         // наш запрос https://api.github.com/search/users?q=location:ukraine+language:java
@@ -45,16 +52,19 @@ class MainActivity : AppCompatActivity() {
                     if (response.body() != null) {
                         val list: ArrayList<ItemProgramist> =
                             response.body()!!.items as ArrayList<ItemProgramist>
-                        adapter = ProgramistAdapter(baseContext, list)
+                        adapter = ProgramistAdapter(baseContext, list,this@MainActivity)
                         recycler.setLayoutManager(LinearLayoutManager(this@MainActivity));
                         recycler.setAdapter(adapter);
                     }
-                    Log.d("MyLOG", "onRespose " + response.body()!!.total_count.toString())
                 }
 
                 override fun onFailure(call: Call<ResultListProgramist>, t: Throwable) {
                     Log.d("MyLOG", "onFailture")
                 }
             })
+    }
+
+    override fun infoProgramist(index: Int) {
+        TODO("Not yet implemented")
     }
 }
