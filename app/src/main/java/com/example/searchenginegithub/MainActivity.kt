@@ -6,6 +6,8 @@ import android.util.Log
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.searchenginegithub.model.developer.ItemProgramist
+import com.example.searchenginegithub.model.developer.ResultListProgramist
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -67,22 +69,18 @@ class MainActivity : AppCompatActivity(), ItemCallback {
     }
 
     override fun infoProgramist(index: Int) {
-
        val intent = Intent(this,InfoAboutDeveloperActivity::class.java)
-
         val login:String = list[index].login
         val avatarUrl:String = list[index].avatar_url
         val id:String = list[index].id.toString()
         val noteId:String = list[index].node_id
         val followersUrl:String = list[index].followers_url
-
         intent.putExtra("index",index)
         intent.putExtra("login",login)
         intent.putExtra("avatarUrl",avatarUrl)
         intent.putExtra("id",id)
         intent.putExtra("noteId",noteId)
         intent.putExtra("followersUrl",followersUrl)
-
         startActivity(intent)
     }
 }

@@ -1,4 +1,6 @@
-package com.example.searchenginegithub
+package com.example.searchenginegithub.model.developer
+
+import com.example.searchenginegithub.model.developer.ItemProgramist
 
 class ResultListProgramist (
     val incomplete_results: Boolean,

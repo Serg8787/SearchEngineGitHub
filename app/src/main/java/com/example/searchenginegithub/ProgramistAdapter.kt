@@ -5,9 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.searchenginegithub.model.developer.ItemProgramist
 import kotlinx.android.synthetic.main.programist_item.view.*
 
-class ProgramistAdapter(val context: Context, val listProgramist: ArrayList<ItemProgramist>,val callback: ItemCallback) : RecyclerView.Adapter<ViewHolder>(){
+class ProgramistAdapter(val context: Context, val listProgramist: ArrayList<ItemProgramist>, val callback: ItemCallback) : RecyclerView.Adapter<ViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(context).inflate(R.layout.programist_item, parent, false))
     }

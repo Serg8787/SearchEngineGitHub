@@ -1,4 +1,4 @@
-package com.example.searchenginegithub
+package com.example.searchenginegithub.model.developer
 
 class ItemProgramist (
     val avatar_url: String,
