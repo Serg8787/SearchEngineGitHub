@@ -5,6 +5,7 @@ import com.example.searchenginegithub.model.developer.ResultListProgramist
 import com.example.searchenginegithub.model.repo.Repo
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface API {
@@ -14,17 +15,12 @@ interface API {
         @Query("q") query: String
     ): Call<ResultListProgramist>
 
-    @GET("search/users?")
-    fun infoDeveloper(
-        @Query("q") query: String
-    ): Call<ItemProgramist>
-
 
 
 // для теста убрал знак вопроса
-    @GET("users")
+    @GET("users/{login}/repos")
     fun getListRepo(
-        @Query("q") query: String
+    @Path("login") login:String
     ): Call<Repo>
 
 

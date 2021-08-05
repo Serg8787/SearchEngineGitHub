@@ -42,7 +42,7 @@ class InfoAboutDeveloperActivity : AppCompatActivity() {
             .with(this).load(avatar).circleCrop().into(ivAvatarInfo);
 
         val retrofit = RetrofitClient.getClient("https://api.github.com/").create(API::class.java)
-        retrofit.getListRepo("${login}/repos")
+        retrofit.getListRepo(login)
             .enqueue(object : Callback<Repo> {
                 override fun onResponse(
                     call: Call<Repo>,
