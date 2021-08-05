@@ -1,5 +1,6 @@
 package com.example.searchenginegithub
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
@@ -15,6 +16,7 @@ class MainActivity : AppCompatActivity(), ItemCallback {
     var adapter: ProgramistAdapter? = null
     lateinit var location: String
     lateinit var language: String
+    lateinit var list: ArrayList<ItemProgramist>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +52,7 @@ class MainActivity : AppCompatActivity(), ItemCallback {
                     response: Response<ResultListProgramist>
                 ) {
                     if (response.body() != null) {
-                        val list: ArrayList<ItemProgramist> =
+                        list =
                             response.body()!!.items as ArrayList<ItemProgramist>
                         adapter = ProgramistAdapter(baseContext, list,this@MainActivity)
                         recycler.setLayoutManager(LinearLayoutManager(this@MainActivity));
@@ -65,6 +67,22 @@ class MainActivity : AppCompatActivity(), ItemCallback {
     }
 
     override fun infoProgramist(index: Int) {
-        TODO("Not yet implemented")
+
+       val intent = Intent(this,InfoAboutDeveloperActivity::class.java)
+
+        val login:String = list[index].login
+        val avatarUrl:String = list[index].avatar_url
+        val id:String = list[index].id.toString()
+        val noteId:String = list[index].node_id
+        val followersUrl:String = list[index].followers_url
+
+        intent.putExtra("index",index)
+        intent.putExtra("login",login)
+        intent.putExtra("avatarUrl",avatarUrl)
+        intent.putExtra("id",id)
+        intent.putExtra("noteId",noteId)
+        intent.putExtra("login",followersUrl)
+
+        startActivity(intent)
     }
 }

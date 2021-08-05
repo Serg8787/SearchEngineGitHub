@@ -11,5 +11,10 @@ interface API {
         @Query("q") query: String
     ): Call<ResultListProgramist>
 
+    @GET("search/users?")
+    fun infoDeveloper(
+        @Query("q") query: String
+    ): Call<ItemProgramist>
+
 
 }
