@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_info_about_developer.view.*
 import kotlinx.android.synthetic.main.developer_item.view.*
 
 
-class ProgramistAdapter(val context: Context, val listProgramist: ArrayList<ItemProgramist>, val callback: ItemCallback) : RecyclerView.Adapter<ViewHolderDeveloper>(){
+class DeveloperAdapter(val context: Context, val listProgramist: ArrayList<ItemProgramist>, val callback: ItemCallback) : RecyclerView.Adapter<ViewHolderDeveloper>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderDeveloper {
         return ViewHolderDeveloper(LayoutInflater.from(context).inflate(R.layout.developer_item, parent, false))
     }

@@ -12,7 +12,7 @@ interface API {
 // знак вопроса в конце оставляем
     @GET("search/users?")
     fun search(
-        @Query("q") query: String
+        @Query("q") query: String,
     ): Call<ResultListProgramist>
 
 

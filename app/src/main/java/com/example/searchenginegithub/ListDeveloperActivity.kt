@@ -30,10 +30,12 @@ class ListDeveloperActivity : AppCompatActivity(), ItemCallback {
         val language = resources.getStringArray(R.array.language)
         val adapterLan = ArrayAdapter(this, R.layout.dropdown_item, language)
         autoCompleteTVLanguage.setAdapter(adapterLan)
+        Log.d("MyLOG", language.toString())
 
         val location = resources.getStringArray(R.array.location)
         val adapterLoc = ArrayAdapter(this, R.layout.dropdown_item, location)
         autoCompleteTVLocation.setAdapter(adapterLoc)
+        Log.d("MyLOG", location.toString())
 
         btSearch.setOnClickListener {
             getListProgramist()
@@ -41,16 +43,11 @@ class ListDeveloperActivity : AppCompatActivity(), ItemCallback {
     }
 
     fun getListProgramist() {
-        val languageA = resources.getStringArray(R.array.language)
-        val adapterLan = ArrayAdapter(this, R.layout.dropdown_item, languageA)
-        autoCompleteTVLanguage.setAdapter(adapterLan)
 
-        val locationA = resources.getStringArray(R.array.location)
-        val adapterLoc = ArrayAdapter(this, R.layout.dropdown_item, locationA)
-        autoCompleteTVLocation.setAdapter(adapterLoc)
-
-        language = autoCompleteTVLocation.text.toString()
+        language = autoCompleteTVLanguage.text.toString()
         location  = autoCompleteTVLocation.text.toString()
+        Log.d("MyLOG", language)
+        Log.d("MyLOG", location)
 
         val retrofit = RetrofitClient.getClient("https://api.github.com/").create(API::class.java)
         // наш запрос https://api.github.com/search/users?q=location:ukraine+language:java
@@ -58,7 +55,8 @@ class ListDeveloperActivity : AppCompatActivity(), ItemCallback {
         // методом тыка я нашел что вместо + надо просто ставить пробел.
         // Тут при поиске в Гугле ничего не находил, что поставить вместо +
 
-        retrofit.search("location:${location} language:${language}")
+        retrofit.search("location:usa language:java")
+//        retrofit.search("","${location}","${language}")
             .enqueue(object : Callback<ResultListProgramist> {
                 override fun onResponse(
                     call: Call<ResultListProgramist>,
