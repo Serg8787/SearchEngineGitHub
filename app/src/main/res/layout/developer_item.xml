@@ -10,8 +10,6 @@
         android:id="@+id/constRoot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-
     <ImageView
         android:id="@+id/ivAvatarItem"
         android:layout_width="60dp"

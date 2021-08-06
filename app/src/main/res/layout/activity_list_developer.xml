@@ -12,11 +12,11 @@
         android:id="@+id/btSearch"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:layout_margin="15dp"
+        android:layout_marginTop="4dp"
         android:text="Найти"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLanguage"/>
+        app:layout_constraintEnd_toEndOf="@+id/textInputLanguage"
+        app:layout_constraintStart_toStartOf="@+id/textInputLanguage"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLanguage" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLocation"
@@ -64,7 +64,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layoutManager="LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@+id/btSearch"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btSearch"
+        app:layout_constraintStart_toStartOf="@+id/btSearch"
+        app:layout_constraintTop_toBottomOf="@+id/btSearch" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

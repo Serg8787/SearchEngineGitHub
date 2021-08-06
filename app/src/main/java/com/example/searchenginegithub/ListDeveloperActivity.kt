@@ -40,7 +40,6 @@ class ListDeveloperActivity : AppCompatActivity(), ItemCallback {
     }
 
     fun getListProgramist() {
-
         language = autoCompleteTVLanguage.text.toString()
         location  = autoCompleteTVLocation.text.toString()
 
@@ -78,14 +77,10 @@ class ListDeveloperActivity : AppCompatActivity(), ItemCallback {
         val login:String = list[index].login
         val avatarUrl:String = list[index].avatar_url
         val id:String = list[index].id.toString()
-        val noteId:String = list[index].node_id
-        val followersUrl:String = list[index].followers_url
         intent.putExtra("index",index)
         intent.putExtra("login",login)
         intent.putExtra("avatarUrl",avatarUrl)
         intent.putExtra("id",id)
-        intent.putExtra("noteId",noteId)
-        intent.putExtra("followersUrl",followersUrl)
         startActivity(intent)
     }
 }
