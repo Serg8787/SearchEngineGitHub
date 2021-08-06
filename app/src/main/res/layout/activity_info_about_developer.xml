@@ -47,7 +47,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="TextView"
             android:textColor="@color/black"
             android:textSize="18dp"
             android:gravity="center"
@@ -64,7 +63,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="Repository"
+        android:text="@string/repository"
         app:layout_constraintEnd_toEndOf="@+id/clRoot"
         app:layout_constraintStart_toStartOf="@+id/clRoot"
         app:layout_constraintTop_toBottomOf="@+id/clRoot" />

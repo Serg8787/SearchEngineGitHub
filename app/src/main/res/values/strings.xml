@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">SearchEngineGitHub</string>
+    <string name="repository">Repository</string>
+    <string name="search">Найти</string>
+    <string name="location">Location</string>
+    <string name="language">Language</string>
     <string-array name="language">
         <item>kotlin</item>
         <item>java</item>

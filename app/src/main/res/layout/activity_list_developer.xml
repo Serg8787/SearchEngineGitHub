@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context=".ListDeveloperActivity">
 
 
@@ -13,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginTop="4dp"
-        android:text="Найти"
+        android:text="@string/search"
         app:layout_constraintEnd_toEndOf="@+id/textInputLanguage"
         app:layout_constraintStart_toStartOf="@+id/textInputLanguage"
         app:layout_constraintTop_toBottomOf="@+id/textInputLanguage" />
@@ -34,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Location"
+            android:text="@string/location"
             android:inputType="none"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -55,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Language"
+            android:text="@string/language"
             android:inputType="none"/>
     </com.google.android.material.textfield.TextInputLayout>
 
