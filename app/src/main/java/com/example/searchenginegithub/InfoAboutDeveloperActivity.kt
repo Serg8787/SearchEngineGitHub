@@ -3,6 +3,7 @@ package com.example.searchenginegithub
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.searchenginegithub.model.repo.Repo
@@ -36,7 +37,7 @@ class InfoAboutDeveloperActivity : AppCompatActivity() {
             Glide
                 .with(this).load(avatar).circleCrop().into(ivAvatarInfo);
             btGetRepo.setOnClickListener {
-                val retrofit = RetrofitClient.getClient("https://api.github.com/").create(API::class.java)
+                val retrofit = RetrofitClient.getClient(getString(R.string.base_url)).create(API::class.java)
                 retrofit.getListRepo(login)
                     .enqueue(object : Callback<Repo> {
                         override fun onResponse(
@@ -48,12 +49,12 @@ class InfoAboutDeveloperActivity : AppCompatActivity() {
                                 adapterRepo = RepoAdapter(baseContext, listRepo)
                                 recyclerRepo.setLayoutManager(LinearLayoutManager(baseContext));
                                 recyclerRepo.setAdapter(adapterRepo);
-                                Log.d("MyLOG","good" + response.body().toString())
+
                             }
                         }
 
                         override fun onFailure(call: Call<Repo>, t: Throwable) {
-                            Log.d("MyLOG", "onFailture")
+                            Toast.makeText(baseContext,getString(R.string.mistake_load), Toast.LENGTH_LONG).show()
                         }
                     })
         }

@@ -1,6 +1,6 @@
 package com.example.searchenginegithub.model.developer
 
-class ItemProgramist (
+class ItemDeveloper (
     val avatar_url: String,
     val events_url: String,
     val followers_url: String,

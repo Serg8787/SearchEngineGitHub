@@ -7,13 +7,13 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.searchenginegithub.model.developer.ItemProgramist
+import com.example.searchenginegithub.model.developer.ItemDeveloper
 import kotlinx.android.synthetic.main.developer_item.view.*
 
 
 class DeveloperAdapter(
     val context: Context,
-    val listProgramist: ArrayList<ItemProgramist>,
+    val listProgramist: ArrayList<ItemDeveloper>,
     val callback: ItemCallback
 ) : RecyclerView.Adapter<ViewHolderDeveloper>() {
     val lastPosition=-1

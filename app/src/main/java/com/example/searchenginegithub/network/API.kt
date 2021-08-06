@@ -1,7 +1,6 @@
 package com.example.searchenginegithub.network
 
-import com.example.searchenginegithub.model.developer.ItemProgramist
-import com.example.searchenginegithub.model.developer.ResultListProgramist
+import com.example.searchenginegithub.model.developer.ResultListDeveloper
 import com.example.searchenginegithub.model.repo.Repo
 import retrofit2.Call
 import retrofit2.http.GET
@@ -13,7 +12,7 @@ interface API {
     @GET("search/users?")
     fun search(
         @Query("q") query: String,
-    ): Call<ResultListProgramist>
+    ): Call<ResultListDeveloper>
 
 
 

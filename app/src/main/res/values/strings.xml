@@ -4,6 +4,8 @@
     <string name="search">Найти</string>
     <string name="location">Location</string>
     <string name="language">Language</string>
+    <string name="base_url">https://api.github.com/</string>
+    <string name="mistake_load">Ошибка при загрузке данных</string>
     <string-array name="language">
         <item>kotlin</item>
         <item>java</item>

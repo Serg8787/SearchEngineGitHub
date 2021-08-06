@@ -4,10 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.searchenginegithub.model.developer.ItemProgramist
-import com.example.searchenginegithub.model.developer.ResultListProgramist
+import com.example.searchenginegithub.model.developer.ItemDeveloper
+import com.example.searchenginegithub.model.developer.ResultListDeveloper
 import com.example.searchenginegithub.network.API
 import com.example.searchenginegithub.network.RetrofitClient
 import kotlinx.android.synthetic.main.activity_list_developer.*
@@ -17,7 +18,7 @@ import retrofit2.Response
 
 class ListDeveloperActivity : AppCompatActivity(), ItemCallback {
     var adapter: DeveloperAdapter? = null
-    lateinit var list: ArrayList<ItemProgramist>
+    lateinit var list: ArrayList<ItemDeveloper>
     lateinit var location: String
     lateinit var language: String
 
@@ -37,6 +38,7 @@ class ListDeveloperActivity : AppCompatActivity(), ItemCallback {
 
         btSearch.setOnClickListener {
             getListProgramist()
+
         }
     }
 
@@ -45,7 +47,7 @@ class ListDeveloperActivity : AppCompatActivity(), ItemCallback {
         location  = autoCompleteTVLocation.text.toString()
 
 
-        val retrofit = RetrofitClient.getClient("https://api.github.com/").create(API::class.java)
+        val retrofit = RetrofitClient.getClient(getString(R.string.base_url)).create(API::class.java)
         // наш запрос https://api.github.com/search/users?q=location:ukraine+language:java
         // q=означает что у нас в классе API один Query, хотя параметра для вставки два location и language
         // методом тыка я нашел что вместо + надо просто ставить пробел.
@@ -53,22 +55,22 @@ class ListDeveloperActivity : AppCompatActivity(), ItemCallback {
 
         retrofit.search("location:${location} language:${language}")
 //        retrofit.search("","${location}","${language}")
-            .enqueue(object : Callback<ResultListProgramist> {
+            .enqueue(object : Callback<ResultListDeveloper> {
                 override fun onResponse(
-                    call: Call<ResultListProgramist>,
-                    response: Response<ResultListProgramist>
+                    call: Call<ResultListDeveloper>,
+                    response: Response<ResultListDeveloper>
                 ) {
                     if (response.body() != null) {
                         list =
-                            response.body()!!.items as ArrayList<ItemProgramist>
+                            response.body()!!.items as ArrayList<ItemDeveloper>
                         adapter = DeveloperAdapter(baseContext, list,this@ListDeveloperActivity)
                         recycler.setLayoutManager(LinearLayoutManager(this@ListDeveloperActivity));
                         recycler.setAdapter(adapter);
                     }
                 }
 
-                override fun onFailure(call: Call<ResultListProgramist>, t: Throwable) {
-                    Log.d("MyLOG", "onFailture")
+                override fun onFailure(call: Call<ResultListDeveloper>, t: Throwable) {
+                   Toast.makeText(baseContext,getString(R.string.mistake_load),Toast.LENGTH_LONG).show()
                 }
             })
     }
