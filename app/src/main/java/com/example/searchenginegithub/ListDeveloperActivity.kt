@@ -10,14 +10,14 @@ import com.example.searchenginegithub.model.developer.ItemProgramist
 import com.example.searchenginegithub.model.developer.ResultListProgramist
 import com.example.searchenginegithub.network.API
 import com.example.searchenginegithub.network.RetrofitClient
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_list_developer.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainActivity : AppCompatActivity(), ItemCallback {
+class ListDeveloperActivity : AppCompatActivity(), ItemCallback {
 
-    var adapter: ProgramistAdapter? = null
+    var adapter: DeveloperAdapter? = null
     lateinit var list: ArrayList<ItemProgramist>
     lateinit var location: String
     lateinit var language: String
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity(), ItemCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_list_developer)
 
         val language = resources.getStringArray(R.array.language)
         val adapterLan = ArrayAdapter(this, R.layout.dropdown_item, language)
@@ -41,6 +41,14 @@ class MainActivity : AppCompatActivity(), ItemCallback {
     }
 
     fun getListProgramist() {
+        val languageA = resources.getStringArray(R.array.language)
+        val adapterLan = ArrayAdapter(this, R.layout.dropdown_item, languageA)
+        autoCompleteTVLanguage.setAdapter(adapterLan)
+
+        val locationA = resources.getStringArray(R.array.location)
+        val adapterLoc = ArrayAdapter(this, R.layout.dropdown_item, locationA)
+        autoCompleteTVLocation.setAdapter(adapterLoc)
+
         language = autoCompleteTVLocation.text.toString()
         location  = autoCompleteTVLocation.text.toString()
 
@@ -59,8 +67,8 @@ class MainActivity : AppCompatActivity(), ItemCallback {
                     if (response.body() != null) {
                         list =
                             response.body()!!.items as ArrayList<ItemProgramist>
-                        adapter = ProgramistAdapter(baseContext, list,this@MainActivity)
-                        recycler.setLayoutManager(LinearLayoutManager(this@MainActivity));
+                        adapter = DeveloperAdapter(baseContext, list,this@ListDeveloperActivity)
+                        recycler.setLayoutManager(LinearLayoutManager(this@ListDeveloperActivity));
                         recycler.setAdapter(adapter);
                     }
                 }
