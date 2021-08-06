@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.searchenginegithub.model.developer.ItemProgramist
 import com.example.searchenginegithub.model.developer.ResultListProgramist
+import com.example.searchenginegithub.network.API
+import com.example.searchenginegithub.network.RetrofitClient
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback

@@ -56,9 +56,18 @@
             app:layout_constraintStart_toStartOf="@+id/tvLoginInfo"
             app:layout_constraintTop_toBottomOf="@+id/tvLoginInfo" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+    <Button
+        android:id="@+id/btGetRepo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Repository"
+        app:layout_constraintEnd_toEndOf="@+id/clRoot"
+        app:layout_constraintStart_toStartOf="@+id/clRoot"
+        app:layout_constraintTop_toBottomOf="@+id/clRoot" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerRepo"
@@ -69,5 +78,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/clRoot"
         app:layout_constraintStart_toStartOf="@+id/clRoot"
-        app:layout_constraintTop_toBottomOf="@+id/clRoot" />
+        app:layout_constraintTop_toBottomOf="@+id/btGetRepo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.example.searchenginegithub
+package com.example.searchenginegithub.network
 
 import com.example.searchenginegithub.model.developer.ItemProgramist
 import com.example.searchenginegithub.model.developer.ResultListProgramist

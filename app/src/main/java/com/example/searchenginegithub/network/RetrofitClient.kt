@@ -1,4 +1,4 @@
-package com.example.searchenginegithub
+package com.example.searchenginegithub.network
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
