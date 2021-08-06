@@ -16,12 +16,10 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class ListDeveloperActivity : AppCompatActivity(), ItemCallback {
-
     var adapter: DeveloperAdapter? = null
     lateinit var list: ArrayList<ItemProgramist>
     lateinit var location: String
     lateinit var language: String
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +33,6 @@ class ListDeveloperActivity : AppCompatActivity(), ItemCallback {
         val location = resources.getStringArray(R.array.location)
         val adapterLoc = ArrayAdapter(this, R.layout.dropdown_item, location)
         autoCompleteTVLocation.setAdapter(adapterLoc)
-        Log.d("MyLOG", location.toString())
 
         btSearch.setOnClickListener {
             getListProgramist()
@@ -46,8 +43,7 @@ class ListDeveloperActivity : AppCompatActivity(), ItemCallback {
 
         language = autoCompleteTVLanguage.text.toString()
         location  = autoCompleteTVLocation.text.toString()
-        Log.d("MyLOG", language)
-        Log.d("MyLOG", location)
+
 
         val retrofit = RetrofitClient.getClient("https://api.github.com/").create(API::class.java)
         // наш запрос https://api.github.com/search/users?q=location:ukraine+language:java
@@ -55,7 +51,7 @@ class ListDeveloperActivity : AppCompatActivity(), ItemCallback {
         // методом тыка я нашел что вместо + надо просто ставить пробел.
         // Тут при поиске в Гугле ничего не находил, что поставить вместо +
 
-        retrofit.search("location:usa language:java")
+        retrofit.search("location:${location} language:${language}")
 //        retrofit.search("","${location}","${language}")
             .enqueue(object : Callback<ResultListProgramist> {
                 override fun onResponse(
