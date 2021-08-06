@@ -23,6 +23,7 @@ class InfoAboutDeveloperActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info_about_developer)
+        supportActionBar?.hide()
 
         if(intent!=null){
             val login = intent.getStringExtra("login").toString()

@@ -24,6 +24,7 @@ class ListDeveloperActivity : AppCompatActivity(), ItemCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_developer)
+        supportActionBar?.hide()
 
         val language = resources.getStringArray(R.array.language)
         val adapterLan = ArrayAdapter(this, R.layout.dropdown_item, language)
